@@ -1,0 +1,6 @@
+[settings]
+lockfile = true
+
+[tools]
+bun = "1.4.0"
+lefthook = "latest"

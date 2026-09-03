@@ -1,0 +1,9 @@
+{
+  "extends": "../tsconfig",
+  "compilerOptions": {
+    "paths": {
+      "eslint-plugin-import-remap": ["../src"]
+    }
+  },
+  "include": ["**/*.ts"]
+}
