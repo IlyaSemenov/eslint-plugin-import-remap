@@ -7,7 +7,7 @@ The plugin rewrites only the quoted module specifier and does not resolve files,
 ## Install
 
 ```sh
-npm install --save-dev eslint@^10 eslint-plugin-import-remap
+npm install --save-dev eslint eslint-plugin-import-remap
 ```
 
 ## Usage
