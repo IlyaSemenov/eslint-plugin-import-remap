@@ -52,6 +52,24 @@ import foo from "@blog/foo"
 // becomes: import foo from "#foo"
 ```
 
+## Oxlint
+
+The plugin also runs in [Oxlint](https://oxc.rs/docs/guide/usage/linter) as a [JS plugin](https://oxc.rs/docs/guide/usage/linter/js-plugins.html), including `--fix` and `<script>` blocks of Vue single-file components:
+
+```json
+{
+  "jsPlugins": ["eslint-plugin-import-remap"],
+  "rules": {
+    "import-remap/remap": [
+      "error",
+      {
+        "mappings": [{ "from": "@blog/*", "to": "#*" }]
+      }
+    ]
+  }
+}
+```
+
 ## Mappings
 
 A mapping without `*` matches the entire module specifier exactly.
