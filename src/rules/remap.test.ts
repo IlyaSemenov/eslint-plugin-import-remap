@@ -1,5 +1,6 @@
 import { describe, expect, it } from "bun:test"
 
+import json from "@eslint/json"
 import { Linter, RuleTester } from "eslint"
 
 import { remap } from "./remap"
@@ -158,5 +159,31 @@ describe("remap configuration", () => {
         },
       ]),
     ).toThrow('Duplicate mapping source "@company/*"')
+  })
+
+  it("can be enabled globally alongside non-JavaScript languages", () => {
+    const linter = new Linter()
+    const config: Linter.Config[] = [
+      {
+        plugins: {
+          json,
+          test: { rules: { remap } },
+        },
+        rules: {
+          "test/remap": ["error", mappings],
+        },
+      },
+      {
+        files: ["**/*.json"],
+        language: "json/json",
+      },
+    ]
+
+    expect(
+      linter.verify('{ "name": "@blog/foo" }', config, "package.json"),
+    ).toEqual([])
+    expect(
+      linter.verify('import value from "@blog/foo"', config, "index.js"),
+    ).toMatchObject([{ messageId: "remap" }])
   })
 })

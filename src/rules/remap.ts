@@ -187,7 +187,6 @@ export const remap = {
       url: "https://github.com/IlyaSemenov/eslint-plugin-import-remap#readme",
     },
     fixable: "code",
-    languages: ["js/js"],
     messages: {
       remap: 'Remap import "{{source}}" to "{{target}}".',
     },
